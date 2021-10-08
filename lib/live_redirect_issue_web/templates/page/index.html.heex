@@ -1,41 +1,41 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace of mind from prototype to production</p>
-</section>
+<div>
+  <div><%= link "Dead Controller A", to: "/switch-dead?branch=a" %></div>
+  <div><%= link "Dead Controller B", to: "/switch-dead?branch=b" %></div>
 
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.6/CHANGELOG.md">v1.6 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://web.libera.chat/#elixir">#elixir on Libera Chat (IRC)</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-      <li>
-        <a href="https://discord.gg/elixir">Elixir on Discord</a>
-      </li>
-    </ul>
-  </article>
-</section>
+  <span>On the /switch-dead page, clicking the button to redirect with flash will show the following JS error:</span>
+
+  <div>
+    <code>
+      <pre>
+        app.js:4137 Uncaught TypeError: Cannot read properties of null (reading 'el')
+          at LiveSocket.replaceMain
+      </pre>
+    </code>
+  </div>
+</div>
+
+<hr />
+
+<div>
+  <div><%= link "Dead Controller A Router", to: "/switch-dead-router?branch=a" %></div>
+  <div><%= link "Dead Controller B Router", to: "/switch-dead-router?branch=b" %></div>
+
+  <span>On the /switch-dead-router page, clicking the button to redirect with flash will show the following (if <code>liveSocket.enableDebug()</code> has been called):</span>
+
+  <div>
+    <code>
+      <pre>
+        phx-Fqwf0mNLRXDkVyrB error: unauthorized live_redirect. Falling back to page request -  {reason: 'unauthorized'}
+      </pre>
+    </code>
+  </div>
+</div>
+
+<hr />
+
+<div>
+  <div><%= link "Live A", to: "/switch-live?branch=a" %></div>
+  <div><%= link "Live B", to: "/switch-live?branch=b" %></div>
+
+  <span>These work as expected, the button will redirect and the flash message will be displayed.</span>
+</div>

@@ -18,6 +18,18 @@ defmodule LiveRedirectIssueWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    # renders a live view with render_live/2
+    get "switch-dead", SwitchController, :live
+
+    # renders a live view with render_live/3 passing a :router option
+    get "switch-dead-router", SwitchController, :live_router
+
+    # renders a live route
+    live "switch-live", SwitchLive
+
+    # place to redirect to
+    live "destination", DestinationLive
   end
 
   # Other scopes may use custom stacks.
